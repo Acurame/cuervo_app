@@ -1,13 +1,15 @@
+import 'package:cuervo_app/column.dart';
+import 'package:cuervo_app/home.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class Loginscreen extends StatefulWidget {
+  const Loginscreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<Loginscreen> createState() => _LoginscreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginscreenState extends State<Loginscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,30 +21,30 @@ class _LoginScreenState extends State<LoginScreen> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Container(
+              children: const [
+                SizedBox(
                   width: 278,
                   height: 56,
-                  child: const TextField(
+                  child: TextField(
                     decoration: InputDecoration(
                       labelText: "Usuario",
                       border: OutlineInputBorder(),
                     ),
                   ),
                 ),
-                const SizedBox(height: 28),
-                Container(
+                SizedBox(height: 28),
+                SizedBox(
                   width: 278,
                   height: 56,
-                  child: const TextField(
+                  child: TextField(
                     decoration: InputDecoration(
                       labelText: "Contraseña",
                       border: OutlineInputBorder(),
                     ),
                   ),
                 ),
-                const SizedBox(height: 22),
-                const Text(
+                SizedBox(height: 22),
+                Text(
                   "Olvidaste tu contraseña?",
                   style: TextStyle(
                     color: Color(0xFF09ADEA),
@@ -56,9 +58,9 @@ class _LoginScreenState extends State<LoginScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Otros métodos de autenticación",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
                   ),
@@ -66,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 24,
                 ),
-                Container(
+                SizedBox(
                   width: 278.0,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,24 +79,44 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: const ShapeDecoration(
                           color: Color(0xFF1877F2),
                           shape: CircleBorder(),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              offset: Offset(0, 2),
+                              blurRadius: 3.0,
+                            ),
+                          ],
                         ),
                         child: IconButton(
                           padding: const EdgeInsets.all(6.0),
                           icon: const Icon(Icons.facebook),
                           color: Colors.white,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const ColumnScreen()),
+                      );
+                          },
                         ),
                       ),
                       Ink(
                         width: 54.0,
                         height: 54.0,
                         decoration: const ShapeDecoration(
-                          color: Colors.black26,
-                          shape: CircleBorder(),
-                        ),
+                            color: Colors.white,
+                            shape: CircleBorder(),
+                            shadows: [
+                              BoxShadow(
+                                  color: Colors.black26,
+                                  offset: Offset(0, 2),
+                                  blurRadius: 3.0),
+                            ]),
                         child: IconButton(
                           padding: const EdgeInsets.all(6.0),
-                          icon: const Icon(Icons.abc),
+                          icon: const Image(
+                            image: AssetImage(
+                                'assets/images/icons/google_logo.png'),
+                          ),
                           color: Colors.black,
                           onPressed: () {},
                         ),
@@ -105,6 +127,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         decoration: const ShapeDecoration(
                           color: Colors.black,
                           shape: CircleBorder(),
+                          shadows: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              offset: Offset(0, 2),
+                              blurRadius: 3.0,
+                            ),
+                          ],
                         ),
                         child: IconButton(
                           padding: const EdgeInsets.all(6.0),
@@ -132,7 +161,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(92.0),
                         ))),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Home()),
+                      );
+                    },
                     child: const Text('Iniciar sesión'),
                   ),
                 ),
